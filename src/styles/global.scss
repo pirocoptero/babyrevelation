@@ -1,0 +1,401 @@
+@media (min-width: 1024px) {
+  #root {
+    display: none;
+  }
+  #mobile {
+    display: block;
+    width: 100%;
+    height: 100vh;
+    background: var(--sky);
+  }
+}
+
+@media only screen {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    height: var(--app-height);
+  }
+
+  #root {
+    -webkit-touch-callout: none;
+  }
+
+  .pink {
+    color: #f243ae;
+  }
+
+  .blue {
+    color: #01c9ea;
+  }
+
+  body {
+    background: var(--sky);
+  }
+
+  header {
+    padding: 40px 10px 10px 10px;
+    text-align: center;
+    color: var(--cream);
+
+    h1 {
+      font-family: "Extrabold", sans-serif;
+      font-size: 1rem;
+    }
+    p {
+      margin-top: 8px;
+      font-family: "Regular", sans-serif;
+      font-size: 0.875rem;
+    }
+  }
+
+  main {
+    .stars {
+      width: 400px;
+      height: 100vh;
+      position: fixed;
+      z-index: -1;
+      background-image: url("../assets/img/stars.svg");
+      background-size: 100%;
+      background-position: -30% -20%;
+      background-repeat: repeat;
+      animation: stars 3s infinite;
+    }
+
+    @keyframes stars {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.7;
+      }
+      100% {
+        opacity: 0.5;
+      }
+    }
+    .logo {
+      margin-top: -10px;
+      padding: 10px;
+      img {
+        margin-left: 15px;
+      }
+    }
+    .cegonha {
+      display: flex;
+      justify-content: space-between;
+
+      .cegonhaimg {
+        margin-top: 10px;
+        width: 0;
+
+        img {
+          display: flex;
+          width: 27vh;
+          margin-left: -5vh;
+          position: relative;
+
+          animation: flying 4s infinite;
+          animation-direction: alternate;
+          animation-delay: 0;
+        }
+
+        @keyframes flying {
+          0% {
+            left: 0px;
+            top: 0px;
+          }
+          25% {
+            left: -3px;
+            top: -5px;
+          }
+          50% {
+            left: 5px;
+            top: 5px;
+          }
+          75% {
+            left: 3px;
+            top: -5px;
+          }
+          100% {
+            left: 0px;
+            top: 0px;
+          }
+        }
+      }
+
+      .datetime {
+        letter-spacing: 0.6px;
+        color: var(--cream);
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding: 0 45px 0 0;
+
+        span:first-of-type {
+          font-family: "Light", sans-serif;
+          font-size: 1.5rem;
+        }
+        > span {
+          font-family: "Bold", sans-serif;
+          font-size: 2.5rem;
+        }
+        > a {
+          font-family: "Medium", sans-serif;
+          color: var(--cream);
+          margin-top: 5px;
+          font-size: 0.8rem;
+        }
+      }
+      .obs {
+        font-family: "Light", sans-serif;
+        color: var(--cream);
+        padding-top: 5vh;
+        p {
+          font-size: 0.71rem;
+          text-align: left;
+        }
+      }
+    }
+  }
+  footer {
+    margin-top: 40px;
+    color: var(--cream);
+    text-align: center;
+
+    > div {
+      p:first-child {
+        font-family: "Regular", sans-serif;
+        font-size: 0.7rem;
+      }
+      p {
+        span {
+          font-family: "Extrabold", sans-serif;
+          font-size: 0.7rem;
+      }
+        font-family: "Extrabold", sans-serif;
+        font-size: 0.7rem;
+      }
+    }
+  }
+  .clouds {
+    img {
+      // transform: scale(2);
+      // animation-play-state: running;
+      // animation-iteration-count: infinite;
+      // animation-delay: 0;
+      // animation-timing-function: 1;
+      animation-direction: alternate;
+      animation: cloudAnim 3s infinite;
+
+      @keyframes cloudAnim {
+        0% {
+          transform: translateX(0px) translatY(0px) scale(1);
+        }
+        50% {
+          transform: translateX(5px) translateY(5px) scale(1.03);
+        }
+        100% {
+          transform: translateX(0px) translateY(0px) scale(1);
+        }
+      }
+    }
+  }
+
+  canvas.confetti {
+    z-index: -999 !important;
+    // width: 100 !important;
+  }
+}
+
+@media screen and (max-device-width: 375px) {
+  .obs {
+    padding-top: 2vh !important;
+  }
+
+  .datetime {
+    margin-top: -2vh;
+  }
+
+  .clouds {
+    img {
+      width: 300px !important;
+    }
+  }
+
+  .bluecloud {
+    left: -28% !important;
+    bottom: -14% !important;
+    z-index: 1;
+  }
+
+  .pinkcloud {
+    right: -28% !important;
+    bottom: -1% !important;
+    z-index: 2;
+  }
+
+  .whitecloud {
+    bottom: -20% !important;
+    left: 10% !important;
+    z-index: 3;
+  }
+
+  .blueCounter {
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+    z-index: 999;
+    font-size: 1.5rem;
+    font-family: "Extrabold";
+  }
+
+  .pinkcounter {
+    position: absolute;
+    right: 10%;
+    bottom: 10%;
+    z-index: 999;
+    font-size: 1.5rem;
+    font-family: "Extrabold";
+  }
+}
+
+@media screen and (min-device-width: 375px) and (max-device-width: 414px) and (max-device-height: 896px) {
+  .clouds img {
+    position: absolute;
+  }
+
+  .bluecloud {
+    left: -42%;
+    bottom: -12%;
+    z-index: 1;
+  }
+
+  .pinkcloud {
+    right: -50%;
+    bottom: -12%;
+    z-index: 2;
+  }
+
+  .whitecloud {
+    width: 500px;
+    bottom: -25%;
+    left: -5%;
+    z-index: 3;
+  }
+
+  .blueCounter {
+    position: absolute;
+    bottom: 7%;
+    left: 10%;
+    z-index: 999;
+    font-size: 1.5rem;
+    font-family: "Extrabold";
+  }
+
+  .pinkcounter {
+    position: absolute;
+    right: 10%;
+    bottom: 7%;
+    z-index: 999;
+    font-size: 1.5rem;
+    font-family: "Extrabold";
+  }
+}
+
+@media screen and (max-device-height: 736px) {
+  footer {
+    margin-top: 23px;
+  }
+  .bluecloud {
+    left: -42%;
+    bottom: -19%;
+  }
+
+  .pinkcloud {
+    right: -50%;
+    bottom: -18%;
+  }
+
+  .whitecloud {
+    width: 500px;
+    bottom: -30%;
+    left: -5%;
+  }
+
+  .blueCounter {
+    position: absolute;
+    bottom: 5%;
+    left: 10%;
+    z-index: 999;
+    font-size: 1.5rem;
+    font-family: "Extrabold";
+  }
+
+  .pinkcounter {
+    position: absolute;
+    right: 10%;
+    bottom: 5%;
+    z-index: 999;
+    font-size: 1.5rem;
+    font-family: "Extrabold";
+  }
+}
+
+// VARIÁVEIS GLOBAIS DE CORES
+
+:root {
+  --sky: #001b2e;
+  --cream: #fefceb;
+  --white: #ffffff;
+  --gray-50: #ececec;
+  --blue-light: #01c9ea;
+  --blue-dark: #326f85;
+  --pink-light: #f243ae;
+  --pink-dark: #852d61;
+
+  // SIZES
+  --app-height: 100%;
+}
+
+// FONTES
+
+@font-face {
+  font-family: "Black";
+  src: local("MadeTommyBlack"), url("./fonts/black.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Bold";
+  src: local("MadeTommyBold"), url("./fonts/bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Extrabold";
+  src: local("MadeTommyExtrabold"),
+    url("./fonts/extrabold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Light";
+  src: local("MadeTommyLight"), url("./fonts/light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Medium";
+  src: local("MadeTommyMedium"), url("./fonts/medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Regular";
+  src: local("MadeTommyRegular"), url("./fonts/regular.otf") format("opentype");
+}
