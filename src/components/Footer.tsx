@@ -5,6 +5,7 @@ import {useState, useEffect} from 'react';
 import {database} from '../services/firebase';
 
 import Confetti from 'react-confetti';
+import {clearTimeout} from 'timers';
 
 export function Footer() {
 
@@ -20,6 +21,9 @@ export function Footer() {
         (async () => {
             const votes = database.ref(`votes`);
             await votes.get().then((vote) => {
+
+                console.log(vote.val());
+                
 
                 const blueVotes = Number(vote.val().blue);
                 const pinkVotes = Number(vote.val().pink);
@@ -37,20 +41,20 @@ export function Footer() {
 
     const handlerClickVote = async (string: string) => {
 
-        if (string === "pink") {
-            localStorage.setItem('@babyrevelation-app/gender', 'PRINCESA');
-            setAnimationIsRunning(!animationIsRunning);
-            toggleConfetti();
-        }
-        else if (string === "blue") {
-            localStorage.setItem('@babyrevelation-app/gender', 'PRÍNCIPE');
-            setAnimationIsRunning(!animationIsRunning);
-            toggleConfetti();
-        }
-
         if (localStorage.getItem('@babyrevelation-app/status') === 'true') {
+            if (string === "pink") {
+                localStorage.setItem('@babyrevelation-app/confeti', 'pink');
+                setAnimationIsRunning(!animationIsRunning);
+                toggleConfetti();
+            }
+            else if (string === "blue") {
+                localStorage.setItem('@babyrevelation-app/confeti', 'blue');
+                setAnimationIsRunning(!animationIsRunning);
+                toggleConfetti();
+            }
             return false;
         }
+
 
         await database.ref(`votes`).set({
             blue: string === "blue" ? blueCounter + 1 : blueCounter,
@@ -79,9 +83,9 @@ export function Footer() {
     }
 
     const toggleConfetti = () => {
-        setTimeout(() => {
+        const confetiTimeout = setTimeout(() => {
             setAnimationIsRunning(false);
-        }, 10000);
+        }, 20000);
     };
 
     const setStatusVotedInLocalStorage = (gender: string) => {
@@ -106,11 +110,10 @@ export function Footer() {
             <div >
                 {
                     <Confetti
-                        gravity={0.1}
                         className="confetti"
                         run={animationIsRunning}
                         numberOfPieces={100}
-                        colors={localStorage.getItem("@babyrevelation-app/gender") === "PRÍNCIPE" ? ["#01c9ea"] : ["#f243ae"]}
+                        colors={localStorage.getItem("@babyrevelation-app/confeti") === "blue" ? ["#01c9ea"] : ["#f243ae"]}
                     />
                 }
             </div>

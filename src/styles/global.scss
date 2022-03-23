@@ -1,6 +1,6 @@
-@media (min-width: 1024px) {
+@media (min-device-width: 1024px) {
   #root {
-    display: none;
+    // display: none;
   }
   #mobile {
     display: block;
@@ -24,7 +24,7 @@
     overflow: hidden;
     width: 100vw;
     height: 100vh;
-    height: var(--app-height);
+    height: var(--app-device-height);
   }
 
   #root {
@@ -101,7 +101,7 @@
         img {
           display: flex;
           width: 27vh;
-          margin-left: -5vh;
+          margin-left: -5rem;
           position: relative;
 
           animation: flying 4s infinite;
@@ -181,7 +181,7 @@
         span {
           font-family: "Extrabold", sans-serif;
           font-size: 0.7rem;
-      }
+        }
         font-family: "Extrabold", sans-serif;
         font-size: 0.7rem;
       }
@@ -217,6 +217,52 @@
   }
 }
 
+@media screen and (max-device-width: 320px) {
+  .clouds {
+    img {
+      position: absolute;
+      width: 260px !important;
+    }
+  }
+
+  .bluecloud {
+    left: -42%;
+    bottom: -9% !important;
+    z-index: 1;
+  }
+
+  .pinkcloud {
+    right: -50%;
+    bottom: -9% !important;
+    z-index: 2;
+  }
+
+  .whitecloud {
+    width: 500px !important;
+    bottom: -17% !important;
+    left: -5%;
+    z-index: 3;
+  }
+
+  .blueCounter {
+    position: absolute;
+    bottom: 7%;
+    left: 10%;
+    z-index: 999;
+    font-size: 1.5rem;
+    font-family: "Extrabold";
+  }
+
+  .pinkcounter {
+    position: absolute;
+    right: 10%;
+    bottom: 7%;
+    z-index: 999;
+    font-size: 1.5rem;
+    font-family: "Extrabold";
+  }
+}
+
 @media screen and (max-device-width: 375px) {
   .obs {
     padding-top: 2vh !important;
@@ -228,7 +274,8 @@
 
   .clouds {
     img {
-      width: 300px !important;
+      position: absolute;
+      width: 250px !important;
     }
   }
 
@@ -268,6 +315,8 @@
     font-family: "Extrabold";
   }
 }
+
+
 
 @media screen and (min-device-width: 375px) and (max-device-width: 414px) and (max-device-height: 896px) {
   .clouds img {
